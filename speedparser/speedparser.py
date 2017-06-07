@@ -576,7 +576,7 @@ class SpeedParser(object):
         self.unix_timestamp = unix_timestamp
         if self.xmlns and '#' in self.xmlns:
             self.xmlns = self.xmlns.strip('#')
-        parser = etree.XMLParser(recover=True)
+        parser = etree.XMLParser(recover=True, resolve_entities=False)
         tree = etree.fromstring(content, parser=parser)
         if isinstance(tree, etree._ElementTree):
             self.tree = tree
