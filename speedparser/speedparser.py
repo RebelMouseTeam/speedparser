@@ -606,7 +606,10 @@ class SpeedParser(object):
             if not (value.startswith('atom') and root_tag == 'rss'):
                 return value
         elif self.xmlns:
-            vers = self.xmlns.split('/')[-2].replace('.', '')
+            try:
+                vers = self.xmlns.split('/')[-2].replace('.', '')
+            except IndexError:
+                vers = ''
         tag = root_tag
         if r.attrib.get('version', None):
             vers = r.attrib['version'].replace('.', '')
